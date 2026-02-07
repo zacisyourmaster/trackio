@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎯 Job Application Tracker
 
-## Getting Started
+A modern, full-stack SaaS application for tracking job applications, interviews, and follow-ups. Built to solve the pain of managing hundreds of job applications during the job search process.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![Prisma](https://img.shields.io/badge/Prisma-Latest-2D3748)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-38B2AC)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Frontend**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* Next.js 15 (App Router)
+* TypeScript
+* Tailwind CSS
+* shadcn/ui
 
-## Learn More
+**Backend**
 
-To learn more about Next.js, take a look at the following resources:
+* Next.js Route Handlers / Server Actions
+* Prisma ORM
+* PostgreSQL (Neon)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Authentication**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Clerk
 
-## Deploy on Vercel
+**Deployment**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Vercel (frontend + backend)
+* Neon (database)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Core Features
+
+### Authentication
+
+* Secure sign up and sign in using Clerk
+* User-specific data isolation (each user only sees their own applications)
+* Automatic user provisioning on first login
+
+---
+
+### Application Tracking
+
+Users can manage all job applications in one place, including:
+
+* Company name
+* Position title
+* Date applied
+* Application status (Applied, Interview, Offer, Rejected, Ghosted)
+* Optional follow-up date
+
+Applications can be:
+
+* Created
+* Viewed
+* Updated
+* Deleted
+
+---
+
+### Dashboard
+
+A centralized dashboard displaying:
+
+* A list or table of all applications
+* Status indicators for quick visual scanning
+* Filtering by application status
+* Sorting by date applied or company
+
+---
+
+### Analytics
+
+Insights into the user’s job search, including:
+
+* Applications submitted over time
+* Response rate (applications that progressed beyond “Applied”)
+* Interview conversion rate
+* Status distribution breakdown
+
+---
+
+### Follow-Up Reminders
+
+* Users can set follow-up dates on applications
+* Email or SMS reminders are sent when a follow-up date is reached
+* Helps users stay consistent with outreach and networking
+
+---
+
+### Import / Export
+
+* Import applications from CSV or Excel files
+* Export existing application data to CSV or Excel
+* Enables easy migration from spreadsheets or backups
+
+---
+
+## Status
+
+This project is under active development.
