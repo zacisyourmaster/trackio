@@ -31,8 +31,8 @@ model Application {
   company    String
   position   String
   status     ApplicationStatus @default(APPLIED)
-  notes      String
-  appliedAt  DateTime
+  notes      String?
+  appliedAt  DateTime          @default(now())
   followUpAt DateTime?
   createdAt  DateTime          @default(now())
 

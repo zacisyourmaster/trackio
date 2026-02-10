@@ -1,23 +1,35 @@
 // import { KanbanBoard } from "@/components/KanbanBoard";
 import Stats from "@/components/Stats";
-import { Button } from "@/components/ui/button";
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty";
-export default function Dashboard(){
-    return (
-    <div className="flex flex-col items-center gap-3 mx-auto py-4">
-        <h1 className="text-4xl font-bold">Welcome, Zach</h1>
-        <Stats />
-        <Empty className="border">
-            <EmptyHeader>
-                <EmptyTitle>No Applications Yet!</EmptyTitle>
-                <EmptyDescription>
-                    You need to add some applications to get started.
-                </EmptyDescription>
-            </EmptyHeader>
-            <EmptyContent className="flex-row justify-center gap-2">
-                <Button>Add Job</Button>
-                <Button variant="outline">Import from CSV</Button>
-            </EmptyContent>
-        </Empty>
-    </div>)
+import EmptyState from "@/components/EmptyState";
+import { prisma } from "@/lib/prisma";
+import { syncUser } from "@/lib/user";
+
+export default async function Dashboard() {
+  const user = await syncUser();
+  const applications = await prisma.application.findMany({
+    where: { userId: user?.id },
+    orderBy: { createdAt: "desc" },
+  });
+
+  return (
+    <div className="mx-auto max-w-6xl py-4 space-y-4">
+      <h1 className="text-4xl font-bold">{`Welcome Back, ${user?.firstName}`}</h1>
+<div className="flex flex-col items-center gap-4">
+
+      <Stats />
+      <div className="border-top border p-3 rounded">
+
+      {applications.length > 0 ? (
+        applications.map((app) => (
+          <div key={app.id}>
+            {app.company} — {app.position}
+          </div>
+        ))
+      ) : (
+        <EmptyState />
+      )}
+      </div>
+      </div>
+    </div>
+  );
 }

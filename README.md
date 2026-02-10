@@ -10,6 +10,10 @@ A modern, full-stack SaaS application for tracking job applications, interviews,
 
 ---
 
+## To-do
+
+* Deprecate Users table: Only need clerk
+
 ## Tech Stack
 
 **Frontend**
