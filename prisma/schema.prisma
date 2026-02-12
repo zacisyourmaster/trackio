@@ -13,30 +13,19 @@ datasource db {
   provider = "postgresql"
 }
 
-model User {
-  id           String        @id @default(cuid())
-  clerkId      String        @unique
-  email        String        @unique
-  firstName    String?
-  lastName     String?
-  applications Application[]
-  createdAt    DateTime      @default(now())
-
-  @@index([clerkId])
-}
-
 model Application {
   id         String            @id @default(cuid())
-  userId     String
+  userId     String // Clerk ID
   company    String
   position   String
   status     ApplicationStatus @default(APPLIED)
   notes      String?
+  salary     String?
+  location   String?
+  jobType    JobType?
   appliedAt  DateTime          @default(now())
   followUpAt DateTime?
   createdAt  DateTime          @default(now())
-
-  user User @relation(fields: [userId], references: [id])
 }
 
 enum ApplicationStatus {
@@ -46,3 +35,21 @@ enum ApplicationStatus {
   REJECTED
   GHOSTED
 }
+
+enum JobType {
+  INTERNSHIP
+  FULL_TIME
+  PART_TIME
+}
+
+// model User {
+//   id           String        @id @default(cuid())
+//   clerkId      String        @unique
+//   email        String        @unique
+//   firstName    String?
+//   lastName     String?
+//   applications Application[]
+//   createdAt    DateTime      @default(now())
+
+//   @@index([clerkId])
+// }
